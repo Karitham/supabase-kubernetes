@@ -12,19 +12,30 @@
 # |-- 11. Vector
 # |-- 12. Functions
 
-# jwt will be used to reference secret in multiple services:
-# Anon & Service key: Studio, Storage, Kong
-# JWT Secret: Auth, Rest, Realtime, Storage
-jwt:
-  secretName: "JWT_SECRET_NAME"
-
-# smtp will be used to reference secret including smtp credentials
-smtp:
-  secretName: "SMTP_SECRET_NAME"
-
-# secret used to access the studio dashboard
-dashboard:
-  secretName: "DASHBOARD_SECRET_NAME"
+secret:
+  # jwt will be used to reference secret in multiple services:
+  # Anon & Service key: Studio, Storage, Kong
+  # JWT Secret: Analytics, Auth, Rest, Realtime, Storage
+  jwt: 
+    # anonKey: ""
+    # serviceKey: ""
+    # secret: ""
+  # smtp will be used to reference secret including smtp credentials
+  smtp:
+    # username: ""
+    # password: ""
+  # secret used to access the studio dashboard
+  dashboard:
+    # username: ""
+    # password: ""
+  # database credentials
+  db:
+    # username: ""
+    # password: ""
+    # database: ""
+  # analytics Logflare API key
+  analytics:
+    # apiKey: ""
 
 # Optional: Postgres Database
 # A standalone Postgres database configured to work with Supabase services.
@@ -32,7 +43,6 @@ dashboard:
 # If so, make sure to adjust DB_HOST accordingly to point to the right database service.
 db:
   enabled: false # Disable the database provisioning
-  secretName: "DB_SECRET_NAME" # Still NEEDS TO BE DEFINED, even if database provisioning is disabled
   image:
     repository: supabase/postgres
     pullPolicy: IfNotPresent
@@ -66,6 +76,8 @@ db:
     port: 5432
   environment:
     POSTGRES_HOST: /var/run/postgresql
+    PGPORT: "5432"
+    POSTGRES_PORT: "5432"
     # POSTGRES_HOST_AUTH_METHOD: md5
   ingress:
     enabled: false
@@ -231,6 +243,7 @@ auth:
   environment:
     # Override the database hostname if using external database
     # DB_HOST: DATABASE.NAMESPACE.svc.cluster.local
+    DB_PORT: 5432
     DB_DRIVER: postgres
     DB_SSL: disable # disable, allow, prefer, require, verify-ca, verify-full
     GOTRUE_API_HOST: "0.0.0.0"
@@ -324,6 +337,7 @@ rest:
   environment:
     # Override the database hostname if using external database
     # DB_HOST: DATABASE.NAMESPACE.svc.cluster.local
+    DB_PORT: 5432
     DB_DRIVER: postgres
     DB_SSL: disable # disable, allow, prefer, require, verify-ca, verify-full
     PGRST_DB_SCHEMA: public,storage
@@ -398,6 +412,7 @@ realtime:
   environment:
     # Override the database hostname if using external database
     # DB_HOST: DATABASE.NAMESPACE.svc.cluster.local
+    DB_PORT: 5432
     DB_SSL: disable # disable, allow, prefer, require, verify-ca, verify-full
     PORT: "4000"
     REPLICATION_MODE: RLS
@@ -475,6 +490,7 @@ meta:
   environment:
     # Override the database hostname if using external database
     # DB_HOST: DATABASE.NAMESPACE.svc.cluster.local
+    DB_PORT: 5432
     DB_DRIVER: postgres
     DB_SSL: disable # disable, allow, prefer, require, verify-ca, verify-full
     PG_META_PORT: "8080"
@@ -548,6 +564,7 @@ storage:
   environment:
     # Override the database hostname if using external database
     # DB_HOST: DATABASE.NAMESPACE.svc.cluster.local
+    DB_PORT: 5432
     DB_DRIVER: postgres
     DB_SSL: disable # disable, allow, prefer, require, verify-ca, verify-full
     PGOPTIONS: -c search_path=storage,public
@@ -771,7 +788,6 @@ kong:
   nodeSelector: {}
   tolerations: []
   affinity: {}
-  config: {}
 
   #   ###
   #   ### Consumers / Users
@@ -926,7 +942,6 @@ analytics:
     repository: supabase/logflare
     pullPolicy: IfNotPresent
     tag: "latest"
-  secretName: "ANALYTIC_SECRET_NAME"
   imagePullSecrets: []
   replicaCount: 1
   nameOverride: ""
@@ -958,6 +973,7 @@ analytics:
     LOGFLARE_NODE_HOST: 127.0.0.1
     # Override the database hostname if using external database
     # DB_HOST: DATABASE.NAMESPACE.svc.cluster.local
+    DB_PORT: 5432
     DB_DRIVER: postgresql
     DB_SSL: disable # disable, allow, prefer, require, verify-ca, verify-full
     DB_SCHEMA: _analytics
@@ -1005,6 +1021,7 @@ analytics:
   tolerations: []
   affinity: {}
 
+# TODO: Expose other services' log to vector
 # Vector
 vector:
   enabled: false # Disable the vector service
@@ -1072,7 +1089,7 @@ vector:
   tolerations: []
   affinity: {}
 
-# Analytics
+# Functions
 functions:
   enabled: true # Disable the analytics service
   image:
@@ -1109,6 +1126,7 @@ functions:
   environment:
     # Override the database hostname if using external database
     # DB_HOST: DATABASE.NAMESPACE.svc.cluster.local
+    DB_PORT: 5432
     DB_DRIVER: postgresql
     DB_SSL: disable # disable, allow, prefer, require, verify-ca, verify-full
   # Mount user functions
