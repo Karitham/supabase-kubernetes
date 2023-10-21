@@ -16,7 +16,7 @@ secret:
   # jwt will be used to reference secret in multiple services:
   # Anon & Service key: Studio, Storage, Kong
   # JWT Secret: Analytics, Auth, Rest, Realtime, Storage
-  jwt: 
+  jwt:
     # anonKey: ""
     # serviceKey: ""
     # secret: ""
@@ -51,6 +51,8 @@ db:
   replicaCount: 1
   nameOverride: ""
   fullnameOverride: ""
+  livenessProbe: {}
+  readinessProbe: {}
   serviceAccount:
     # Specifies whether a service account should be created
     create: true
@@ -144,6 +146,8 @@ studio:
   replicaCount: 1
   nameOverride: ""
   fullnameOverride: ""
+  livenessProbe: {}
+  readinessProbe: {}
   serviceAccount:
     # Specifies whether a service account should be created
     create: true
@@ -217,6 +221,8 @@ auth:
   replicaCount: 1
   nameOverride: ""
   fullnameOverride: ""
+  livenessProbe: {}
+  readinessProbe: {}
   serviceAccount:
     # Specifies whether a service account should be created
     create: true
@@ -311,6 +317,8 @@ rest:
   imagePullSecrets: []
   nameOverride: ""
   fullnameOverride: ""
+  livenessProbe: {}
+  readinessProbe: {}
   serviceAccount:
     # Specifies whether a service account should be created
     create: true
@@ -386,6 +394,8 @@ realtime:
   imagePullSecrets: []
   nameOverride: ""
   fullnameOverride: ""
+  livenessProbe: {}
+  readinessProbe: {}
   serviceAccount:
     # Specifies whether a service account should be created
     create: true
@@ -464,6 +474,8 @@ meta:
   replicaCount: 1
   nameOverride: ""
   fullnameOverride: ""
+  livenessProbe: {}
+  readinessProbe: {}
   serviceAccount:
     # Specifies whether a service account should be created
     create: true
@@ -538,6 +550,8 @@ storage:
   replicaCount: 1
   nameOverride: ""
   fullnameOverride: ""
+  livenessProbe: {}
+  readinessProbe: {}
   serviceAccount:
     # Specifies whether a service account should be created
     create: true
@@ -628,6 +642,8 @@ imgproxy:
   replicaCount: 1
   nameOverride: ""
   fullnameOverride: ""
+  livenessProbe: {}
+  readinessProbe: {}
   serviceAccount:
     # Specifies whether a service account should be created
     create: true
@@ -708,6 +724,8 @@ kong:
   replicaCount: 1
   nameOverride: ""
   fullnameOverride: ""
+  livenessProbe: {}
+  readinessProbe: {}
   serviceAccount:
     # Specifies whether a service account should be created
     create: true
@@ -946,6 +964,8 @@ analytics:
   replicaCount: 1
   nameOverride: ""
   fullnameOverride: ""
+  livenessProbe: {}
+  readinessProbe: {}
   serviceAccount:
     # Specifies whether a service account should be created
     create: true
@@ -1032,6 +1052,8 @@ vector:
   replicaCount: 1
   nameOverride: ""
   fullnameOverride: ""
+  livenessProbe: {}
+  readinessProbe: {}
   serviceAccount:
     # Specifies whether a service account should be created
     create: true
@@ -1099,6 +1121,8 @@ functions:
   replicaCount: 1
   nameOverride: ""
   fullnameOverride: ""
+  livenessProbe: {}
+  readinessProbe: {}
   serviceAccount:
     # Specifies whether a service account should be created
     create: true
