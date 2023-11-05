@@ -1,5 +1,5 @@
 secret:
-  jwt: 
+  jwt:
     anonKey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE
     serviceKey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJzZXJ2aWNlX3JvbGUiLAogICAgImlzcyI6ICJzdXBhYmFzZS1kZW1vIiwKICAgICJpYXQiOiAxNjQxNzY5MjAwLAogICAgImV4cCI6IDE3OTk1MzU2MDAKfQ.DaYlNEoUrrEn2Ig7tqibS-PHK5vgusbcbo7X36XVt4Q
     secret: your-super-secret-jwt-token-with-at-least-32-characters-long
@@ -28,7 +28,7 @@ db:
         - -U
         - postgres
     initialDelaySeconds: 3
-  persistence: 
+  persistence:
     enabled: false
 
 studio:
@@ -38,7 +38,7 @@ studio:
   environment:
     STUDIO_DEFAULT_ORGANIZATION: "My Organization"
     STUDIO_DEFAULT_PROJECT: "My Project"
-    SUPABASE_PUBLIC_URL: http://example.com/
+    SUPABASE_PUBLIC_URL: http://example.svc/
     NEXT_PUBLIC_ENABLE_LOGS: "true"
   livenessProbe:
     httpGet:
@@ -50,7 +50,7 @@ auth:
   image:
     repo: v2.99.0
   environment:
-    GOTRUE_SITE_URL: http://example.com
+    GOTRUE_SITE_URL: http://example.svc
     GOTRUE_EXTERNAL_EMAIL_ENABLED: "true"
     GOTRUE_MAILER_AUTOCONFIRM: "true"
     GOTRUE_SMTP_ADMIN_EMAIL: "your-mail@example.com"
@@ -83,9 +83,9 @@ storage:
       path: /status
       port: 5000
     initialDelaySeconds: 3
-  persistence: 
+  persistence:
     enabled: false
-    
+
 imgproxy:
   image:
     tag: v3.8.0
@@ -97,7 +97,7 @@ imgproxy:
         - imgproxy
         - health
     initialDelaySeconds: 3
-  persistence: 
+  persistence:
     enabled: false
 
 kong:
