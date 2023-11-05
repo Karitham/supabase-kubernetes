@@ -17,9 +17,6 @@ secret:
   # Anon & Service key: Studio, Storage, Kong
   # JWT Secret: Analytics, Auth, Rest, Realtime, Storage
   jwt:
-    # anonKey: ""
-    # serviceKey: ""
-    # secret: ""
     anonKey: ""
     serviceKey: ""
     secret: ""
@@ -47,7 +44,8 @@ secret:
 # You can spin up any other Postgres database container if required.
 # If so, make sure to adjust DB_HOST accordingly to point to the right database service.
 db:
-  enabled: false # Disable the database provisioning
+  # Enable database provisioning
+  enabled: true
   image:
     repository: supabase/postgres
     pullPolicy: IfNotPresent
@@ -150,7 +148,8 @@ db:
 
 # Studio Application
 studio:
-  enabled: true # Disable the studio
+  # Enable studio provisioning
+  enabled: true
   image:
     repository: supabase/studio
     pullPolicy: IfNotPresent
@@ -225,7 +224,8 @@ studio:
 
 # Auth Service
 auth:
-  enabled: true # Disable the auth service
+  # Enable auth provisioning
+  enabled: true
   image:
     repository: supabase/gotrue
     pullPolicy: IfNotPresent
@@ -324,7 +324,8 @@ auth:
 
 # Rest Service
 rest:
-  enabled: true # Disable the rest service
+  # Enable postgrest provisioning
+  enabled: true
   image:
     repository: postgrest/postgrest
     pullPolicy: IfNotPresent
@@ -403,7 +404,8 @@ rest:
 
 # Realtime Service
 realtime:
-  enabled: true # Disable the realtime service
+  # Enable realtime provisioning
+  enabled: true
   image:
     repository: supabase/realtime
     pullPolicy: IfNotPresent
@@ -486,7 +488,8 @@ realtime:
 
 # Meta Service
 meta:
-  enabled: true # Disable the meta service
+  # Enable meta provisioning
+  enabled: true
   image:
     repository: supabase/postgres-meta
     pullPolicy: IfNotPresent
@@ -563,7 +566,8 @@ meta:
 
 # Storage Service
 storage:
-  enabled: true # Disable the storage service
+  # Enable storage provisioning
+  enabled: true
   image:
     repository: supabase/storage-api
     pullPolicy: IfNotPresent
@@ -654,7 +658,8 @@ storage:
 
 # imgproxy
 imgproxy:
-  enabled: true # Disable the imgproxy service
+  # Enable imgproxy provisioning
+  enabled: true
   image:
     repository: darthsim/imgproxy
     pullPolicy: IfNotPresent
@@ -736,7 +741,8 @@ imgproxy:
 
 # Kong
 kong:
-  enabled: true # Disable the kong service
+  # Enable kong provisioning
+  enabled: true
   image:
     repository: kong
     pullPolicy: IfNotPresent
@@ -979,7 +985,8 @@ kong:
   #               - admin
 # Analytics
 analytics:
-  enabled: true # Disable the analytics service
+  # Enable analytics provisioning
+  enabled: true
   image:
     repository: supabase/logflare
     pullPolicy: IfNotPresent
@@ -1068,7 +1075,8 @@ analytics:
 
 # Vector
 vector:
-  enabled: true # Disable the vector service
+  # Enable vector provisioning
+  enabled: true
   image:
     repository: timberio/vector
     pullPolicy: IfNotPresent
@@ -1137,7 +1145,8 @@ vector:
 
 # Functions
 functions:
-  enabled: true # Disable the analytics service
+  # Enable functions provisioning
+  enabled: true
   image:
     repository: supabase/edge-runtime
     pullPolicy: IfNotPresent
