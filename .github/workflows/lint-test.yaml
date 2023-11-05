@@ -1,6 +1,6 @@
 name: Lint and Test Charts
 
-on: create
+on: push
 
 jobs:
   lint-test:
